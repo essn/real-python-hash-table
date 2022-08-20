@@ -1,6 +1,10 @@
 class HashTable:
     def __init__(self, capacity):
-        self.pairs = capacity * [None]
+        self._pairs = capacity * [None]
+
+    @property
+    def pairs(self):
+        return self._pairs.copy()
 
     def get(self, key, default=None):
         try:
@@ -18,13 +22,13 @@ class HashTable:
             raise KeyError(key)
 
     def __len__(self):
-        return len(self.pairs)
+        return len(self._pairs)
 
     def __setitem__(self, key, value):
-        self.pairs[self._index(key)] = (key, value)
+        self._pairs[self._index(key)] = (key, value)
 
     def __getitem__(self, key):
-        pair = self.pairs[self._index(key)]
+        pair = self._pairs[self._index(key)]
         if pair is None:
             raise KeyError(key)
         return pair[1]

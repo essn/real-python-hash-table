@@ -120,6 +120,10 @@ def test_should_return_pairs(hash_table):
     assert (False, True) in hash_table.pairs
 
 
+def test_should_return_copy_of_pairs(hash_table):
+    assert hash_table.pairs is not hash_table.pairs
+
+
 @pytest.mark.skip
 def test_should_not_shrink_when_removing_elements():
     pass
