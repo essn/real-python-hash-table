@@ -12,6 +12,18 @@ def hash_table():
     return sample_data
 
 
+def test_should_delete_key_value_pair(hash_table):
+    assert "hola" in hash_table
+    assert "hello" in hash_table.values
+    assert len(hash_table) == 100
+
+    del hash_table["hola"]
+
+    assert "hola" not in hash_table
+    assert "hello" not in hash_table.values
+    assert len(hash_table) == 100
+
+
 def test_should_get_value(hash_table):
     assert hash_table.get("hola") == "hello"
 
