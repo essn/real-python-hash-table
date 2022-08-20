@@ -88,13 +88,13 @@ def test_should_not_contain_none_value_when_created():
 
 
 def test_should_create_empty_value_slots():
-    assert HashTable(capacity=3).pairs == [None, None, None]
+    assert HashTable(capacity=3)._pairs == [None, None, None]
 
 
 def test_should_insert_none_value():
     hash_table = HashTable(capacity=100)
     hash_table["key"] = None
-    assert None in hash_table.pairs
+    assert ("key", None) in hash_table.pairs
 
 
 def test_should_raise_key_error_when_deleting(hash_table):
@@ -122,6 +122,10 @@ def test_should_return_pairs(hash_table):
 
 def test_should_return_copy_of_pairs(hash_table):
     assert hash_table.pairs is not hash_table.pairs
+
+
+def test_should_not_include_blank_pairs(hash_table):
+    assert None not in hash_table.pairs
 
 
 @pytest.mark.skip
