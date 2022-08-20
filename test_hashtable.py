@@ -11,6 +11,14 @@ def hash_table():
     return sample_data
 
 
+def test_should_find_key(hash_table):
+    assert "hola" in hash_table
+
+
+def test_should_not_find_key(hash_table):
+    assert "missing_key" not in hash_table
+
+
 def test_should_raise_error_on_missing_key():
     hash_table = HashTable(capacity=100)
     with pytest.raises(KeyError) as exception_info:
