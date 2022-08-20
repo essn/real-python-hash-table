@@ -2,6 +2,8 @@ from hashtable import HashTable
 
 import pytest
 
+from pytest_unordered import unordered
+
 
 @pytest.fixture
 def hash_table():
@@ -124,6 +126,18 @@ def test_should_return_copy_of_pairs(hash_table):
 
 def test_should_not_include_blank_pairs(hash_table):
     assert None not in hash_table.values
+
+
+def test_should_return_duplicate_values():
+    hash_table = HashTable(capacity=100)
+    hash_table["Alice"] = 24
+    hash_table["Bob"] = 42
+    hash_table["Joe"] = 42
+    assert [24, 42, 42] == sorted(hash_table.values)
+
+
+def test_should_get_values(hash_table):
+    assert unordered(hash_table.values) == ["hello", 37, True]
 
 
 @pytest.mark.skip
