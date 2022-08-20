@@ -2,6 +2,20 @@ from hashtable import HashTable, BLANK
 
 import pytest
 
+@pytest.fixture
+def hash_table():
+    sample_data = HashTable(capacity=100)
+    sample_data["hola"] = "hello"
+    sample_data[98.6] = 37
+    sample_data[False] = True
+    return sample_data
+
+
+def test_should_find_value_by_key(hash_table):
+    assert hash_table["hola"] == "hello"
+    assert hash_table[98.6] == 37
+    assert hash_table[False] is True
+
 
 def test_should_create_hashtable():
     assert HashTable(capacity=100) is not None
@@ -31,7 +45,6 @@ def test_should_not_contain_none_value_when_created():
 
 def test_should_create_empty_value_slots():
     assert HashTable(capacity=3).values == [BLANK, BLANK, BLANK]
-
 
 def test_should_insert_none_value():
     hash_table = HashTable(capacity=100)
