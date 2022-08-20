@@ -15,7 +15,7 @@ class HashTable:
         return hash(key) % len(self)
 
     def __delitem__(self, key):
-        self.values[self._index(key)] = BLANK
+        self[key] = BLANK
 
     def __len__(self):
         return len(self.values)
