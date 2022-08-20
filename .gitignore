@@ -1,0 +1,34 @@
+# Vim swap files
+*.swp
+
+# Compiled Python files
+*.pyc
+
+# Python init files
+*__.py
+*__.pyo
+
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# DS_Store
+.DS_Store
+tags
+
+# .vscode
+.vscode
+
+# direnv .envrc
+.envrc
+
+# wakatime
+.wakatime-project
