@@ -96,6 +96,11 @@ def test_should_insert_none_value():
     hash_table["key"] = None
     assert None in hash_table.values
 
+def test_should_raise_key_error_when_deleting(hash_table):
+    with pytest.raises(KeyError) as exception_info:
+        del hash_table["missing_key"]
+    assert exception_info.value.args[0] == "missing_key"
+
 
 @pytest.mark.skip
 def test_should_not_shrink_when_removing_elements():

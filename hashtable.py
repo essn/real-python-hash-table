@@ -15,7 +15,10 @@ class HashTable:
         return hash(key) % len(self)
 
     def __delitem__(self, key):
-        self[key] = BLANK
+        if key in self:
+            self[key] = BLANK
+        else:
+            raise KeyError(key)
 
     def __len__(self):
         return len(self.values)
