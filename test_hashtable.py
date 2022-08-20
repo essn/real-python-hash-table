@@ -1,4 +1,4 @@
-from hashtable import HashTable, BLANK
+from hashtable import HashTable
 
 import pytest
 
@@ -13,14 +13,12 @@ def hash_table():
 
 
 def test_should_delete_key_value_pair(hash_table):
-    assert "hola" in hash_table
-    assert "hello" in hash_table.values
+    assert ("hola", "hello") in hash_table.pairs
     assert len(hash_table) == 100
 
     del hash_table["hola"]
 
-    assert "hola" not in hash_table
-    assert "hello" not in hash_table.values
+    assert ("hola", "hello") not in hash_table.pairs
     assert len(hash_table) == 100
 
 
@@ -76,25 +74,27 @@ def test_should_insert_key_value_pairs():
     hash_table[98.6] = 37
     hash_table[False] = True
 
-    assert "hello" in hash_table.values
-    assert 37 in hash_table.values
-    assert True in hash_table.values
+    assert ("hola", "hello") in hash_table.pairs
+    assert (98.6, 37) in hash_table.pairs
+    assert (False, True) in hash_table.pairs
 
     assert len(hash_table) == 100
 
 
 def test_should_not_contain_none_value_when_created():
-    assert None not in HashTable(capacity=100).values
+    hash_table = HashTable(capacity=100)
+    values = [pair.value for pair in hash_table.pairs if pair]
+    assert None not in values
 
 
 def test_should_create_empty_value_slots():
-    assert HashTable(capacity=3).values == [BLANK, BLANK, BLANK]
+    assert HashTable(capacity=3).pairs == [None, None, None]
 
 
 def test_should_insert_none_value():
     hash_table = HashTable(capacity=100)
     hash_table["key"] = None
-    assert None in hash_table.values
+    assert None in hash_table.pairs
 
 
 def test_should_raise_key_error_when_deleting(hash_table):
@@ -112,6 +112,12 @@ def test_should_update_value(hash_table):
     assert hash_table[98.6] == 37
     assert hash_table[False] is True
     assert len(hash_table) == 100
+
+
+def test_should_return_pairs(hash_table):
+    assert ("hola", "hello") in hash_table.pairs
+    assert (98.6, 37) in hash_table.pairs
+    assert (False, True) in hash_table.pairs
 
 
 @pytest.mark.skip
