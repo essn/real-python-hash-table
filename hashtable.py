@@ -16,7 +16,11 @@ class HashTable:
 
     @property
     def pairs(self):
-        return [pair for pair in self._pairs if pair]
+        return {pair for pair in self._pairs if pair}
+    
+    @property
+    def keys(self):
+        return {pair.key for pair in self.pairs}
 
     def get(self, key, default=None):
         try:

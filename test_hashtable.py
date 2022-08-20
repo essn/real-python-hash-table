@@ -140,6 +140,41 @@ def test_should_get_values(hash_table):
     assert unordered(hash_table.values) == ["hello", 37, True]
 
 
+def test_should_get_values_of_empty_hash_table():
+    assert HashTable(capacity=100).values == []
+
+
+def test_should_return_copy_of_values(hash_table):
+    assert hash_table.values is not hash_table.values
+
+
+def test_should_get_keys(hash_table):
+    assert hash_table.keys == {"hola", 98.6, False}
+
+
+def test_should_get_keys_of_empty_hash_table():
+    assert HashTable(capacity=100).keys == set()
+
+
+def test_should_return_copy_of_keys(hash_table):
+    assert hash_table.keys is not hash_table.keys
+
+
+def test_should_return_pairs(hash_table):
+    assert hash_table.pairs == {("hola", "hello"), (98.6, 37), (False, True)}
+
+
+def test_should_get_pairs_of_empty_hash_table():
+    assert HashTable(capacity=100).pairs == set()
+
+
+def test_should_convert_to_dict(hash_table):
+    dictionary = dict(hash_table.pairs)
+    assert set(dictionary.keys()) == hash_table.keys
+    assert set(dictionary.items()) == hash_table.pairs
+    assert list(dictionary.values()) == unordered(hash_table.values)
+
+
 @pytest.mark.skip
 def test_should_not_shrink_when_removing_elements():
     pass
