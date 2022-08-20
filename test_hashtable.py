@@ -2,6 +2,7 @@ from hashtable import HashTable, BLANK
 
 import pytest
 
+
 @pytest.fixture
 def hash_table():
     sample_data = HashTable(capacity=100)
@@ -9,6 +10,22 @@ def hash_table():
     sample_data[98.6] = 37
     sample_data[False] = True
     return sample_data
+
+
+def test_should_get_value(hash_table):
+    assert hash_table.get("hola") == "hello"
+
+
+def test_should_get_none_when_missing_key(hash_table):
+    assert hash_table.get("missing_key") is None
+
+
+def test_should_get_default_value_when_missing_key(hash_table):
+    assert hash_table.get("missing_key", "default") == "default"
+
+
+def test_should_get_value_with_default(hash_table):
+    assert hash_table.get("hola", "default") == "hello"
 
 
 def test_should_find_key(hash_table):
@@ -60,6 +77,7 @@ def test_should_not_contain_none_value_when_created():
 
 def test_should_create_empty_value_slots():
     assert HashTable(capacity=3).values == [BLANK, BLANK, BLANK]
+
 
 def test_should_insert_none_value():
     hash_table = HashTable(capacity=100)
