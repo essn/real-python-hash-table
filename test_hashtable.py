@@ -13,12 +13,12 @@ def hash_table():
 
 
 def test_should_delete_key_value_pair(hash_table):
-    assert ("hola", "hello") in hash_table.values
+    assert ("hola", "hello") in hash_table.pairs
     assert len(hash_table) == 100
 
     del hash_table["hola"]
 
-    assert ("hola", "hello") not in hash_table.values
+    assert ("hola", "hello") not in hash_table.pairs
     assert len(hash_table) == 100
 
 
@@ -74,9 +74,9 @@ def test_should_insert_key_value_pairs():
     hash_table[98.6] = 37
     hash_table[False] = True
 
-    assert ("hola", "hello") in hash_table.values
-    assert (98.6, 37) in hash_table.values
-    assert (False, True) in hash_table.values
+    assert ("hola", "hello") in hash_table.pairs
+    assert (98.6, 37) in hash_table.pairs
+    assert (False, True) in hash_table.pairs
 
     assert len(hash_table) == 100
 
@@ -92,7 +92,7 @@ def test_should_create_empty_value_slots():
 def test_should_insert_none_value():
     hash_table = HashTable(capacity=100)
     hash_table["key"] = None
-    assert ("key", None) in hash_table.values
+    assert ("key", None) in hash_table.pairs
 
 
 def test_should_raise_key_error_when_deleting(hash_table):
@@ -113,9 +113,9 @@ def test_should_update_value(hash_table):
 
 
 def test_should_return_pairs(hash_table):
-    assert ("hola", "hello") in hash_table.values
-    assert (98.6, 37) in hash_table.values
-    assert (False, True) in hash_table.values
+    assert ("hola", "hello") in hash_table.pairs
+    assert (98.6, 37) in hash_table.pairs
+    assert (False, True) in hash_table.pairs
 
 
 def test_should_return_copy_of_pairs(hash_table):
