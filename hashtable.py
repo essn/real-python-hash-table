@@ -3,7 +3,7 @@ class HashTable:
         self._pairs = capacity * [None]
 
     @property
-    def pairs(self):
+    def values(self):
         return [pair for pair in self._pairs if pair]
 
     def get(self, key, default=None):
