@@ -3,6 +3,7 @@
 
 # Compiled Python files
 *.pyc
+*__pyc
 
 # Python init files
 *__.py
@@ -32,3 +33,6 @@ tags
 
 # wakatime
 .wakatime-project
+
+# local git settings
+.gitconfig
