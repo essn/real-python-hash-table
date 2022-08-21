@@ -16,12 +16,12 @@ def hash_table():
 
 def test_should_delete_key_value_pair(hash_table):
     assert ("hola", "hello") in hash_table.pairs
-    assert len(hash_table) == 100
+    assert len(hash_table) == 3
 
     del hash_table["hola"]
 
     assert ("hola", "hello") not in hash_table.pairs
-    assert len(hash_table) == 100
+    assert len(hash_table) == 3
 
 
 def test_should_get_value(hash_table):
@@ -65,8 +65,8 @@ def test_should_create_hashtable():
     assert HashTable(capacity=100) is not None
 
 
-def test_should_report_capacity():
-    assert len(HashTable(capacity=100)) == 100
+def test_should_report_length_of_empty_pairs():
+    assert len(HashTable(capacity=100)) == 0
 
 
 def test_should_insert_key_value_pairs():
@@ -80,7 +80,7 @@ def test_should_insert_key_value_pairs():
     assert (98.6, 37) in hash_table.pairs
     assert (False, True) in hash_table.pairs
 
-    assert len(hash_table) == 100
+    assert len(hash_table) == 3
 
 
 def test_should_not_contain_none_value_when_created():
@@ -111,7 +111,7 @@ def test_should_update_value(hash_table):
     assert hash_table["hola"] == "hallo"
     assert hash_table[98.6] == 37
     assert hash_table[False] is True
-    assert len(hash_table) == 100
+    assert len(hash_table) == 3
 
 
 def test_should_return_pairs(hash_table):

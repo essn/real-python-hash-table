@@ -29,7 +29,7 @@ class HashTable:
             return default
 
     def _index(self, key):
-        return hash(key) % len(self)
+        return hash(key) % len(self._pairs)
 
     def __delitem__(self, key):
         if key in self:
@@ -38,7 +38,7 @@ class HashTable:
             raise KeyError(key)
 
     def __len__(self):
-        return len(self._pairs)
+        return len(self.pairs)
 
     def __setitem__(self, key, value):
         self._pairs[self._index(key)] = Pair(key, value)
